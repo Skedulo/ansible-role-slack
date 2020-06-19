@@ -1,0 +1,26 @@
+- name: Send Slack Notification
+  slack:
+    token: "{{ slack_token }}"
+    attachments:
+      - text: "{{ env }}-{{ application }}\n"
+        title: "New Deployment"
+        color: "{{ 'good' if deploy_success else 'danger' }}"
+        fields:
+          - title: Application
+            value: "{{ application }}"
+            short: True
+          - title: Environment
+            value: "{{ env }}"
+            short: True
+          - title: Deployer
+            value: "{{ user | default('unknown') }}"
+          - title: Result
+            value: "{{ 'Success' if deploy_success else 'Failed' }}"
+            short: True
+          - title: Tag
+            value: "{{ version|default('-') }}"
+          - title: Config
+            value: "{{ config_hash }}"
+          - title: Cluster
+            value: "{{ kube_cluster_name }}"
+            short: True
