@@ -20,7 +20,7 @@
           - title: Tag
             value: "{{ version|default('-') }}"
           - title: Config
-            value: "{{ config_hash }}"
+            value: "{{ config_version }}"
           - title: Cluster
             value: "{{ kube_cluster_name }}"
             short: True
