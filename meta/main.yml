@@ -1,1 +1,2 @@
-dependencies: []
+collections:
+  - community.general
